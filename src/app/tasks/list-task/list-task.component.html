@@ -1,0 +1,30 @@
+<div class="col-md-12">  
+    <div class="table-responsive table-container">  
+      <table id="tblTaskList" class="table table-borderless">  
+        <thead>  
+          <tr>  
+            <th>Task</th>  
+            <th>Parent</th>  
+            <th>Priority</th>  
+            <th>Start</th> 
+            <th>End</th>  
+            <th></th><th></th>
+          </tr>  
+        </thead>  
+        <tbody>  
+          <tr *ngFor="let task of taskList">  
+            <td class="hidden">{{task.taskname}}</td>  
+            <td>{{task.parentname}}</td>  
+            <td>{{task.priority}}</td>  
+            <td>{{task.startdate}}</td>  
+            <td>{{task.enddate}}</td> 
+            <td>  
+              <button (click)="editTask(task)" style="margin-left: 20px;" class="btn btn-info"> Edit</button> 
+              <button (click)="endTask(task)" class="btn btn-info"> End Task</button>  
+               
+            </td>  
+          </tr>  
+        </tbody>  
+      </table>  
+    </div>  
+  </div> 
