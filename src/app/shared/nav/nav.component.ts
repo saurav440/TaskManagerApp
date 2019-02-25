@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-view-task',
-  templateUrl: './view-task.component.html',
+  selector: 'app-nav',
+  templateUrl: './nav.component.html',
   styles: []
 })
-export class ViewTaskComponent implements OnInit {
+export class NavComponent implements OnInit {
 
   constructor() { }
 

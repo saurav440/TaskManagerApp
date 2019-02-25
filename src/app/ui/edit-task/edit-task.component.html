@@ -1,0 +1,56 @@
+
+<div *ngIf='taskInfo'>
+  <form name="form" #editForm="ngForm" (ngSubmit)="editForm.form.valid && onSubmitUpdateTask(editForm)" novalidate>
+    <div class="form-horizontal col-md-8">
+      <div class="form-group row">
+        <label for="taskName" class="col-md-2 col-form-label">Task:</label>
+        <div class="col-md-6">
+          <input type="text" class="form-control" name="taskName" [(ngModel)]="taskInfo.TaskName" readonly />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="editPriority" class="col-md-2 col-form-label">Priority:</label>
+        <div class="col-md-6">
+          <input type="range" class="form-control-range slider" min="0" max="30" step="1" name="priority"
+            [(ngModel)]="taskInfo.Priority">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="id" class="col-md-2 col-form-label">Parent Task:</label>
+        <div class="col-md-6">
+          <select id="parentId" class="form-control" [(ngModel)]="taskInfo.ParentId" name="parentId" #parentId="ngModel">
+            <option *ngFor="let parent of parentTasks" [ngValue]="parent.TaskId" ng-selected="taskInfo.ParentId">{{parent.TaskName}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="startDate" class="col-md-2 col-form-label">Start Date:</label>
+        <div class="col-md-6">
+          <input type="date" date-date-format="dd-MM-yyyy" class="form-control" name="startDate" [(ngModel)]="taskInfo.StartDate"
+             [ngClass]="{ 'is-invalid': editForm.submitted && startDate.invalid }" required />
+          <div *ngIf="editForm.submitted && startDate.invalid" class="invalid-feedback">
+            <div *ngIf="startDate.errors.required">Start Date is required</div>
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="addEndDate" class="col-md-2 col-form-label">End Date</label>
+        <div class="col-md-6">
+          <input type="date" date-date-format="dd-MM-yyyy" class="form-control" name="endDate" [(ngModel)]="taskInfo.EndDate" #endDate="ngModel"
+            [ngClass]="{ 'is-invalid': editForm.submitted && endDate.invalid }" required />
+          <div *ngIf="editForm.submitted && endDate.invalid" class="invalid-feedback">
+            <div *ngIf="endDate.errors.required">End Date is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="offset-2 col-md-6 pl-3">
+          <button type="submit" class="btn btn-primary" id="btnUpdateTask">Update Task</button>
+          <button type="submit" class="btn btn-primary ml-2" id="btnCancelTask" (click)="cancelTaskHandler()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
