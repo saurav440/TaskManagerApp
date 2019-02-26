@@ -7,6 +7,7 @@ import { TaskDetail } from 'src/app/models/task-detail';
 import { TaskService } from 'src/app/services/task.service';
 
 
+
 @Component({
   selector: 'app-add-task',
   templateUrl: './add-task.component.html',
@@ -14,7 +15,14 @@ import { TaskService } from 'src/app/services/task.service';
 })
 export class AddTaskComponent implements OnInit {
 
-  model = new TaskDetail();
+  model: TaskDetail = {
+    taskId: '',
+    taskName:'',
+    parentTaskId:'',
+    priority:3,
+    startDate: '',
+    endDate:''
+  };
   parentTasks: any[];
   
   constructor(private taskService: TaskService, private router: Router) { }
@@ -24,6 +32,7 @@ export class AddTaskComponent implements OnInit {
       .subscribe((resp) => {
         this.parentTasks = resp;
       });
+    
   }
 
   onSubmitAddTask() {
@@ -32,12 +41,12 @@ export class AddTaskComponent implements OnInit {
     this.taskService.addTask(this.model)
       .subscribe(response => {
         console.log(response);
-        //this.status = "records created successpully"
-       // this.router.navigate(['view']);
+       // this.status = "records created successpully"
+        this.router.navigate(['view']);
       });
   }
   resetTask(){
-    this.model = new TaskDetail();
+    this.model.priority= 3;
   }
 }
 

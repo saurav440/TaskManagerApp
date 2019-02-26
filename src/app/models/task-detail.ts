@@ -1,7 +1,7 @@
 export class TaskDetail {
     taskId:string;
     taskName:string;
-    parentTask:string;
+    parentTaskId:string;
     priority:number;
     startDate:string;
     endDate:string;
