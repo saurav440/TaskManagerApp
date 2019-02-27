@@ -26,23 +26,24 @@ export class EditTaskComponent implements OnInit {
     })
     this.taskService.getTaskById(this.taskId)
         .subscribe(data => {  
-          console.log(data.Task)
-         this.taskInfo = data.Task;
-         this.parentTasks = data.TasksList;
-        
+          console.log(data)
+         this.taskInfo = data;
          this.taskInfo.StartDate = this.taskInfo.StartDate.substr(0,10);
          this.taskInfo.EndDate = this.taskInfo.EndDate.substr(0,10);
-    })  
+    })
+    
+    this.taskService.getTasks()
+        .subscribe(data =>{this.parentTasks = data})
   }
 
-  onSubmitUpdateTask(formData: NgForm) {
+  onSubmitUpdateTask() {
     
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(formData.value))
-    //this.taskService.updateTask(formData.value)
-   // .subscribe( response => {
-    //  console.log(response);
-    //  this.router.navigate(['view']);
-   //});
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.taskInfo))
+    this.taskService.updateTask(this.taskInfo)
+        .subscribe( response => {
+          console.log(response);
+          this.router.navigate(['view']);
+        });
    }
    cancelTaskHandler(){
     this.router.navigate(['view']);

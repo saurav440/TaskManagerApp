@@ -26,10 +26,11 @@ export class ViewTaskComponent implements OnInit {
     this.router.navigate(['update/'+ taskId] );
   }
 
-  endTask(taskId:string){
-    this.taskService.endTask(taskId)
+  endTask(task){
+    this.taskService.endTask(task)
     .subscribe(resp =>{
-      this.router.navigate(['view']);
+      //this.router.navigate(['view']);
+      this.tasks = resp;
     });
     
   }
@@ -37,7 +38,8 @@ export class ViewTaskComponent implements OnInit {
   deleteTask(taskId:string){
     this.taskService.deleteTask(taskId)
     .subscribe(resp =>{
-      this.router.navigate(['view']);
+      //this.router.navigate(['view']);
+      this.tasks = resp;
     });
   }
   

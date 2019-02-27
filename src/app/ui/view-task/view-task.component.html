@@ -65,7 +65,7 @@
             <button (click)="editTask(task.TaskId)" class="btn btn-info btn-sm" [disabled]="!task.Status"> Edit</button> 
           </td>  
           <td>
-              <button (click)="endTask(task.TaskId)" class="btn btn-info btn-sm"> End Task</button>  
+              <button (click)="endTask(task)" class="btn btn-info btn-sm" [disabled]="!task.Status"> End Task</button>  
           </td>
           <td>
               <button (click)="deleteTask(task.TaskId)" class="btn btn-info btn-sm"> Delete Task</button> 

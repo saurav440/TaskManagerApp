@@ -18,7 +18,7 @@ export class AddTaskComponent implements OnInit {
   model: TaskDetail = {
     taskId: '',
     taskName:'',
-    parentTaskId:'',
+    parentId:'',
     priority:3,
     startDate: '',
     endDate:''

@@ -1,6 +1,6 @@
 
 <div *ngIf='taskInfo'>
-  <form name="form" #editForm="ngForm" (ngSubmit)="editForm.form.valid && onSubmitUpdateTask(editForm)" novalidate>
+  <form name="form" #editForm="ngForm" (ngSubmit)="editForm.form.valid && onSubmitUpdateTask()" novalidate>
     <div class="form-horizontal col-md-8">
       <div class="form-group row">
         <label for="taskName" class="col-md-2 col-form-label">Task:</label>
