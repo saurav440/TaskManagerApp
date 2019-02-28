@@ -29,7 +29,6 @@ export class ViewTaskComponent implements OnInit {
   endTask(task){
     this.taskService.endTask(task)
     .subscribe(resp =>{
-      //this.router.navigate(['view']);
       this.tasks = resp;
     });
     

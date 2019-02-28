@@ -36,12 +36,11 @@ export class AddTaskComponent implements OnInit {
   }
 
   onSubmitAddTask() {
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
+    //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
 
     this.taskService.addTask(this.model)
       .subscribe(response => {
         console.log(response);
-       // this.status = "records created successpully"
         this.router.navigate(['view']);
       });
   }

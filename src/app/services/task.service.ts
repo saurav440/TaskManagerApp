@@ -18,6 +18,7 @@ export class TaskService {
   getTasks() {
     return this.http.get(this.baseUrl + 'GetAll')
       .pipe(map((response) => {
+        console.log(response)
         return response.json();
       })
       );
@@ -28,7 +29,7 @@ export class TaskService {
     console.log(task)
     return this.http.post(this.baseUrl + 'AddTask', task)
       .pipe(map((response) => {
-        return response.json();
+        return response;
       })
       );
   }
